@@ -22,7 +22,8 @@ export class NaturalSitesPage implements OnInit {
     displayNaturalSites() {
         this.dataUnescoService.getDataNatural().subscribe(data => {
             this.results = data.records;
-            console.log('affiche site culturel', this.results);
+            this.results.sort(this.sortData);
+            // console.log('affiche site culturel', this.results);
         });
     }
 
@@ -35,14 +36,24 @@ export class NaturalSitesPage implements OnInit {
         const val = ev.target.value;
         if (val && val.trim() !== '') {
             this.results = this.results.filter((item) => {
-              console.log('this result', this.results)
+             // console.log('this result', this.results)
                 return (item.fields.region.toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
-        } else if (this.results === '') {
-            console.log('aucun');
         } else {
             this.displayNaturalSites();
         }
+    }
+
+    sortData(a: any, b: any) {
+        const famA = a.fields.site;
+        const famB = b.fields.site;
+        let compare = 0;
+        if (famA > famB) {
+            compare = 1;
+        } else if (famA < famB) {
+            compare = -1;
+        }
+        return compare;
     }
 
 

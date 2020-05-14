@@ -21,7 +21,8 @@ export class CulturalSitesPage implements OnInit {
     displayCulturalSites() {
         this.dataUnescoService.getDataCultural().subscribe(data => {
             this.results = data.records;
-            console.log('affiche site culturel', this.results);
+            this.results.sort(this.sortData);
+            // console.log('affiche site culturel', this.results);
         });
     }
 
@@ -40,5 +41,17 @@ export class CulturalSitesPage implements OnInit {
             this.displayCulturalSites();
         }
 
+    }
+
+    sortData(a: any, b: any) {
+        const famA = a.fields.site;
+        const famB = b.fields.site;
+        let compare = 0;
+        if (famA > famB) {
+            compare = 1;
+        } else if (famA < famB) {
+            compare = -1;
+        }
+        return compare;
     }
 }
