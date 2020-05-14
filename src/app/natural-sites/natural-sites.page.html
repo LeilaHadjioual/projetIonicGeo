@@ -18,7 +18,7 @@
   <ion-list>
     <ion-item *ngFor="let item of results" (click)="goToDetails(item.recordid)">
       <ion-thumbnail slot="start">
-        <img src="https://whc.unesco.org/uploads/sites/{{item.fields.image_url.filename}}"/>
+        <img class="imgNatural" alt="image site naturels" src="https://whc.unesco.org/uploads/sites/{{item.fields.image_url.filename}}"/>
       </ion-thumbnail>
       <ion-label>
         <p><ion-icon name="locate"></ion-icon> {{item.fields.region}}</p>

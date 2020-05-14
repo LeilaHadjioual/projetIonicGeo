@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'quiz',
     loadChildren: () => import('./quiz/quiz.module').then( m => m.QuizPageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 

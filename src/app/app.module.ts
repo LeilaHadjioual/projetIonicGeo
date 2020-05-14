@@ -12,6 +12,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 
+import {ModalPageModule} from './modal/modal.module';
+
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,7 +22,8 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
         BrowserModule,
         IonicModule.forRoot(),
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ModalPageModule
     ],
     providers: [
         StatusBar,

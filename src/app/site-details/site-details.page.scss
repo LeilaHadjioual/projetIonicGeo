@@ -1,9 +1,8 @@
 #contentStyle{
-  ion-avatar{
-    width: 28%;
-    height: auto;
+   .locationBtn{
+    background-color: transparent;
+    color:var(--ion-color-danger);
   }
-
   h5, span{
     margin:1em;
   }
@@ -16,6 +15,14 @@
   }
   hr{
     border:1px solid var(--ion-color-success);
+  }
+
+  .linkBtn{
+    text-align: center;
+    .likeBtn{
+      background-color: transparent;
+      color:yellowgreen;
+    }
   }
 }
 
