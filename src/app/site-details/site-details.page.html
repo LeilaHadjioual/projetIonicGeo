@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> {{information?.records[0].fields.site}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content id="contentStyle">
+    <ion-buttons>
+        <ion-back-button *ngIf="information && information.records[0].fields.category=== 'Cultural'"
+                         defaultHref="/cultural-sites"></ion-back-button>
+        <ion-back-button *ngIf="information && information.records[0].fields.category=== 'Natural'"
+                         defaultHref="/natural-sites"></ion-back-button>
+    </ion-buttons>
+
+    <ion-button [routerLink]="['/', 'my-map']">
+        <ion-icon name="map"></ion-icon>
+        retour map</ion-button>
+
+    <div class="texte" *ngIf="information">
+        <p>{{information.records[0].fields.site}}</p>
+        <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}"/>
+        <p>Où le trouver ?</p>
+        <span>{{information.records[0].fields.states}}</span>
+        <p *ngIf="information.records[0].fields.justification">
+            Pourquoi ce site est-il classé au patrimoine de l'Unesco ?
+        </p>
+        <span>{{information.records[0].fields.justification}}</span>
+        <p>En détails</p>
+        <span>{{information.records[0].fields.short_description}}</span>
+    </div>
+</ion-content>

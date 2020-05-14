@@ -1,0 +1,7 @@
+{
+  "name": "projetGeo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

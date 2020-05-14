@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>UNESCO World Heritage</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+        <div>
+            <ion-img alt="UNESCO logo" src="../../assets/imgHome/logoUnesco.jpg" style="width: 50%; margin:auto"></ion-img>
+            <p><a href="https://whc.unesco.org/" target="_blank">L'Organisation des Nations Unies pour l'éducation, la science et la culture (UNESCO)</a> cherche à encourager l'identification,
+                la protection et la préservation du patrimoine culturel et naturel dans le monde considéré comme d'une valeur exceptionnelle pour l'humanité.
+                Cela est inscrit dans un traité international appelé Convention concernant la protection du patrimoine mondial culturel et naturel, adopté par l'UNESCO en 1972.
+            </p>
+            <ion-img alt="image site culturel" src="../../assets/imgHome/bada-bagh.jpg"></ion-img>
+
+<!--            <ion-img alt="image site culturel" src="../../assets/imgHome/old.jpg"></ion-img>-->
+            <p>Le patrimoine est notre héritage du passé, ce avec quoi nous vivons aujourd'hui et ce que nous transmettons aux générations futures.
+                Notre patrimoine culturel et naturel sont à la fois des sources irremplaçables de vie et d'inspiration.</p>
+            <ion-img alt="image site culturel" src="../../assets/imgHome/taj-mahal.jpg"></ion-img>
+
+            <ion-button expand="full" color="success" (click)="goToCulturalSites()">Tous les sites culturels
+            </ion-button>
+        </div>
+        <div>
+            <ion-img alt="image site naturel" src="../../assets/imgHome/dolomites.jpg"></ion-img>
+            <ion-button expand="full" color="secondary" (click)="goToNaturalSites()">Tous les sites naturels
+            </ion-button>
+        </div>
+    </div>
+
+
+</ion-content>
