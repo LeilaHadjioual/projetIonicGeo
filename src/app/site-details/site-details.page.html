@@ -21,9 +21,9 @@
                 <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
             </ion-avatar>
             <h5>{{information?.records[0].fields.site}}</h5>
-            <span>
-                <ion-icon name="locate"></ion-icon>
-            </span>
+            <button class="locationBtn" (click)="openModal()">
+                <ion-icon name="location-sharp" size="large"></ion-icon>
+            </button>
         </ion-item>
 
         <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
@@ -39,23 +39,23 @@
         </ion-card-content>
 
         <ion-row>
-            <ion-col>
-                <button ion-button icon-start clear small>
-                    <ion-icon name="thumbs-up"></ion-icon>
+            <ion-col class="linkBtn">
+                <button class="likeBtn" >
+                    <ion-icon name="thumbs-up" ></ion-icon>
                     <div>12 Likes</div>
                 </button>
             </ion-col>
-            <ion-col>
-                <button ion-button icon-start clear small>
-                    <ion-icon name="text"></ion-icon>
-                    <div>4 Comments</div>
+            <ion-col class="linkBtn">
+                <button class="likeBtn">
+                    <ion-icon name="text" style="font-size:18px"></ion-icon>
+                    <div>4 Commentaires</div>
                 </button>
             </ion-col>
-            <ion-col align-self-center text-center>
-                <ion-note>
-                    11h ago
-                </ion-note>
-            </ion-col>
+<!--            <ion-col align-self-center text-center>-->
+<!--                <ion-note>-->
+<!--                    11h ago-->
+<!--                </ion-note>-->
+<!--            </ion-col>-->
         </ion-row>
 
     </ion-card>
