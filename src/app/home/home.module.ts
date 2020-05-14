@@ -7,15 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import {QuizBannerComponent} from '../quiz-banner/quiz-banner.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
-  ],
-    declarations: [HomePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HomePageRoutingModule
+    ],
+    exports: [
+        QuizBannerComponent
+    ],
+    declarations: [HomePage, QuizBannerComponent]
 })
 export class HomePageModule {}

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DataUnescoService} from '../data-unesco.service';
 import {Observable} from 'rxjs';
 
@@ -12,7 +12,7 @@ export class SiteDetailsPage implements OnInit {
     public siteDetails: string;
     information = null;
 
-    constructor(private activatedRoute: ActivatedRoute, private dataUnescoService: DataUnescoService) {
+    constructor(private activatedRoute: ActivatedRoute, private dataUnescoService: DataUnescoService, private router: Router) {
     }
 
     ngOnInit() {
@@ -20,6 +20,12 @@ export class SiteDetailsPage implements OnInit {
         this.dataUnescoService.getDetailsSite(id).subscribe(data => {
             this.information = data;
         });
+    }
+
+    goToMap() {
+        console.log('hhh')
+        this.router.navigate(['/my-map']);
+
     }
 
 }

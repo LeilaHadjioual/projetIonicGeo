@@ -15,20 +15,58 @@
                          defaultHref="/natural-sites"></ion-back-button>
     </ion-buttons>
 
-    <ion-button [routerLink]="['/', 'my-map']">
-        <ion-icon name="map"></ion-icon>
-        retour map</ion-button>
+    <ion-card *ngIf="information">
+        <ion-item class="headerCard">
+            <ion-avatar item-start>
+                <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
+            </ion-avatar>
+            <h5>{{information?.records[0].fields.site}}</h5>
+            <span>
+                <ion-icon name="locate"></ion-icon>
+            </span>
+        </ion-item>
 
-    <div class="texte" *ngIf="information">
-        <p>{{information.records[0].fields.site}}</p>
-        <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}"/>
-        <p>Où le trouver ?</p>
-        <span>{{information.records[0].fields.states}}</span>
-        <p *ngIf="information.records[0].fields.justification">
-            Pourquoi ce site est-il classé au patrimoine de l'Unesco ?
-        </p>
-        <span>{{information.records[0].fields.justification}}</span>
-        <p>En détails</p>
-        <span>{{information.records[0].fields.short_description}}</span>
+        <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
+
+        <ion-card-content>
+            <p *ngIf="information.records[0].fields.justification" class="question">
+                Pourquoi ce site est-il classé au patrimoine de l'Unesco ?
+            </p>
+            <p>{{information.records[0].fields.justification}}</p>
+            <hr *ngIf="information.records[0].fields.justification"/>
+            <p class="question">En détails</p>
+            <p>{{information.records[0].fields.short_description}}</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+                <ion-note>
+                    11h ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+    <ion-button expand="full" [routerLink]="['/', 'my-map']" color="danger">
+        <ion-icon name="map" color="light"></ion-icon>
+        accéder à la carte
+    </ion-button>
+
+
+    <div>
+        <app-quiz-banner></app-quiz-banner>
     </div>
 </ion-content>

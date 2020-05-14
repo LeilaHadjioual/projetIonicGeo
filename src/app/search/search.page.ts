@@ -20,6 +20,7 @@ export class SearchPage implements OnInit {
     initializeJsonData() {
         this.dataUnescoService.getAllData().subscribe(data => {
             this.jsonData = data.records;
+            console.log('data', this.jsonData);
         });
     }
 
@@ -34,5 +35,6 @@ export class SearchPage implements OnInit {
         }
 
     }
+
 
 }

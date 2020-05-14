@@ -1,7 +1,22 @@
+#contentStyle{
+  ion-avatar{
+    width: 28%;
+    height: auto;
+  }
 
-#contentStyle {
-  .texte {
-    padding: 2em;
-    text-align: justify
+  h5, span{
+    margin:1em;
+  }
+  p{
+    text-align: justify;
+  }
+  .question{
+    font-weight: bold;
+    color:var(--ion-color-primary);
+  }
+  hr{
+    border:1px solid var(--ion-color-success);
   }
 }
+
+
