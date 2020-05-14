@@ -1,1 +1,11 @@
-
+#searchPage {
+  .searchSiteText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    width: 17em;
+    //max-height: 32px;
+    -webkit-box-orient: vertical;
+  }
+}

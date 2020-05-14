@@ -21,6 +21,7 @@ export class SearchPage implements OnInit {
         this.dataUnescoService.getAllData().subscribe(data => {
             this.jsonData = data.records;
             console.log('data', this.jsonData);
+            this.jsonData.sort(this.sortJsonData);
         });
     }
 
@@ -34,6 +35,18 @@ export class SearchPage implements OnInit {
             this.initializeJsonData();
         }
 
+    }
+
+    sortJsonData(a: any, b: any) {
+        const famA = a.fields.site;
+        const famB = b.fields.site;
+        let compare = 0;
+        if (famA > famB) {
+            compare = 1;
+        } else if (famA < famB) {
+            compare = -1;
+        }
+        return compare;
     }
 
 
