@@ -29,7 +29,8 @@ export class SiteDetailsPage implements OnInit {
                 component: ModalPage,
                 componentProps: {
                     latitude: this.information.records[0].fields.coordinates[0],
-                    longitude: this.information.records[0].fields.coordinates[1]
+                    longitude: this.information.records[0].fields.coordinates[1],
+                    name: this.information.records[0].fields.site
                 }
             });
         await modal.present();

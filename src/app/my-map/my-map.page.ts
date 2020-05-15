@@ -28,7 +28,7 @@ export class MyMapPage implements OnInit {
     getAllPosition() {
         this.dataUnescoService.getAllData().subscribe(data => {
             this.siteCoordinatesList = data;
-            console.log('propertylist', this.siteCoordinatesList);
+           // console.log('propertylist', this.siteCoordinatesList);
         });
     }
 
@@ -53,7 +53,7 @@ export class MyMapPage implements OnInit {
     }
 
     leafletMap() {
-        console.log('marker', this.siteCoordinatesList);
+        // console.log('marker', this.siteCoordinatesList);
         for (const site of this.siteCoordinatesList) {
             marker([site.fields.coordinates[0], site.fields.coordinates[1]]).addTo(this.map)
                 .bindPopup('<a href="/site-details/' + site.recordid + '"> ' + site.fields.site + '</a>');

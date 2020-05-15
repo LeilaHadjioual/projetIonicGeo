@@ -8,19 +8,28 @@
 </ion-header>
 
 <ion-content>
-    <!--  <ion-buttons>-->
-    <!--    <ion-back-button defaultHref="/"></ion-back-button>-->
-    <!--  </ion-buttons>-->
+    <ion-buttons>
+        <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
 
-    <!--  <div id="quizMap" style="width:100%; height:100%;"></div>-->
     <div>
-        <span>Où se trouve ce site ?</span>
-      <img src="" alt="image quiz">
-          <ion-buttons>
-            <ion-button >random img</ion-button>
-          </ion-buttons>
+        <p>Tester vos connaissances géographiques et culturels avec notre quiz de gélocalisation</p>
+        <p>retrouvez où se situe les sites cuturels et naturels</p>
+        <ion-buttons>
+            <ion-button (click)="randomImage()">
+                <ion-icon name="reload-outline"></ion-icon>
+                photo
+            </ion-button>
+        </ion-buttons>
+        <img *ngIf="selectedImg" id="randomImg"
+             src="https://whc.unesco.org/uploads/sites/{{selectedImg.fields.image_url.filename}}"
+             alt="image quiz">
+        <p id="textdist"  style="float:right" *ngIf="dist">vous êtes à {{dist}} km de la réelle position</p>
+
     </div>
 
-  <button>indiquer sur la carte</button>
+    <button  id="btnMap"*ngIf="selectedImg" (click)="loadMap()">Afficher la carte</button>
+    <div id="quizMap" style="width:100%; height:50%;"></div>
+    <button *ngIf="marker" (click)="calculDistance()">réponse</button>
 
 </ion-content>

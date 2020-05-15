@@ -34,7 +34,7 @@ export class DataUnescoService {
     }
 
     getDetailsSite(id: string) {
-        console.log('getdetails');
+        // console.log('getdetails');
         return this.http.get(`${this.url}&refine.recordid=${id}`);
 
     }

@@ -20,7 +20,7 @@ export class SearchPage implements OnInit {
     initializeJsonData() {
         this.dataUnescoService.getAllData().subscribe(data => {
             this.jsonData = data.records;
-            console.log('data', this.jsonData);
+            // console.log('data', this.jsonData);
             this.jsonData.sort(this.sortJsonData);
         });
     }
