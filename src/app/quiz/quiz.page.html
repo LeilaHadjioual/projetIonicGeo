@@ -7,29 +7,42 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="quizPage">
     <ion-buttons>
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
-    <div>
-        <p>Tester vos connaissances géographiques et culturels avec notre quiz de gélocalisation</p>
-        <p>retrouvez où se situe les sites cuturels et naturels</p>
-        <ion-buttons>
-            <ion-button (click)="randomImage()">
-                <ion-icon name="reload-outline"></ion-icon>
-                photo
-            </ion-button>
-        </ion-buttons>
-        <img *ngIf="selectedImg" id="randomImg"
-             src="https://whc.unesco.org/uploads/sites/{{selectedImg.fields.image_url.filename}}"
-             alt="image quiz">
-        <p id="textdist"  style="float:right" *ngIf="dist">vous êtes à {{dist}} km de la réelle position</p>
+    <div class="txtCenter">
+        <p>Tester vos connaissances géographiques et culturels avec notre quiz de gélocalisation en retrouvant où se
+            situe les sites cuturels et naturels</p>
+        <p>Après une partie de 5 tours, vous découvrirez votre score</p>
+    </div>
+    <ion-button color="secondary" expand="full" (click)="playGame()">
+        <ion-icon name="reload-outline"></ion-icon>
+        JOUER
+    </ion-button>
 
+    <div class="alignImgText">
+        <div>
+            <img *ngIf="selectedImg" id="randomImg"
+                 src="https://whc.unesco.org/uploads/sites/{{selectedImg.fields.image_url.filename}}"
+                 alt="image quiz">
+        </div>
+        <div>
+            <p id="textdist" *ngIf="dist">vous êtes à {{dist}} km de la réelle position</p>
+
+        </div>
+    </div>
+    <div class="alignBtnImg" *ngIf="selectedImg">
+        <ion-button color="secondary" (click)="randomImage()">
+            <ion-icon name="reload-outline"></ion-icon>
+            Next
+        </ion-button>
+        <p *ngIf="selectedImg && round<6">tour : {{round}} /5</p>
     </div>
 
-    <button  id="btnMap"*ngIf="selectedImg" (click)="loadMap()">Afficher la carte</button>
+    <button id="btnMap" *ngIf="selectedImg" (click)="loadMap()">Indiquer sur la carte</button>
     <div id="quizMap" style="width:100%; height:50%;"></div>
-    <button *ngIf="marker" (click)="calculDistance()">réponse</button>
+    <ion-button *ngIf="marker" (click)="calculDistance()">réponse</ion-button>
 
 </ion-content>

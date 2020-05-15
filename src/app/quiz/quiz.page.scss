@@ -1,0 +1,22 @@
+#quizPage {
+  .txtCenter {
+    margin: 1em;
+    text-align: center;
+  }
+
+  .alignImgText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+  }
+  .alignBtnImg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-right: 2em;
+    margin-left: 2em
+  }
+}

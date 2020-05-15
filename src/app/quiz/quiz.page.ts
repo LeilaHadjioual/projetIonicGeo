@@ -63,6 +63,21 @@ export class QuizPage implements OnInit {
         });
     }
 
+    playGame() {
+        this.randomImage();
+        if (this.marker !== undefined) {
+            this.map.removeLayer(this.marker);
+            this.marker = undefined;
+            if (this.markerResult !== undefined && this.polyline !== undefined) {
+                this.map.removeLayer(this.markerResult);
+                this.map.removeLayer(this.polyline);
+            }
+        }
+        this.dist = null;
+        this.played = false;
+        this.round = 1;
+    }
+
     randomImage() {
         this.selectedImg = this.quizData[Math.floor(Math.random() * this.quizData.length)];
         if (this.marker !== undefined) {
@@ -167,8 +182,8 @@ export class QuizPage implements OnInit {
     async presentAlert() {
         const alert = await this.alertController.create({
             header: 'GAME OVER',
-            subHeader: 'le jeu est terminé',
-            message: 'Vous avez gagné ' + this.totalPoints + ' points',
+            subHeader: 'Oups, le jeu est terminé',
+            message: 'Vous avez cumulé un total de ' + this.totalPoints + ' points',
             buttons: ['OK']
         });
         this.totalPoints = 0;
