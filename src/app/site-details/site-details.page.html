@@ -29,6 +29,12 @@
         <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
 
         <ion-card-content>
+            <p>Catégorie de site : {{information.records[0].fields.category}}</p>
+            <p>Date inscription UNESCO : {{information.records[0].fields.date_inscribed}}</p>
+            <p>Localisation : {{information.records[0].fields.location}}</p>
+            <p>Pays : {{information.records[0].fields.states}}</p>
+            <p>Continent : {{information.records[0].fields.region}}</p>
+            <hr/>
             <p *ngIf="information.records[0].fields.justification" class="question">
                 Pourquoi ce site est-il classé au patrimoine de l'Unesco ?
             </p>
@@ -40,8 +46,8 @@
 
         <ion-row>
             <ion-col class="linkBtn">
-                <button class="likeBtn" >
-                    <ion-icon name="thumbs-up" ></ion-icon>
+                <button class="likeBtn">
+                    <ion-icon name="thumbs-up"></ion-icon>
                     <div>12 Likes</div>
                 </button>
             </ion-col>
@@ -51,11 +57,11 @@
                     <div>4 Commentaires</div>
                 </button>
             </ion-col>
-<!--            <ion-col align-self-center text-center>-->
-<!--                <ion-note>-->
-<!--                    11h ago-->
-<!--                </ion-note>-->
-<!--            </ion-col>-->
+            <!--            <ion-col align-self-center text-center>-->
+            <!--                <ion-note>-->
+            <!--                    11h ago-->
+            <!--                </ion-note>-->
+            <!--            </ion-col>-->
         </ion-row>
 
     </ion-card>

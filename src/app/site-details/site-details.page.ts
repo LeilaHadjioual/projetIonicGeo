@@ -21,6 +21,7 @@ export class SiteDetailsPage implements OnInit {
         let id = this.siteDetails = this.activatedRoute.snapshot.paramMap.get('id');
         this.dataUnescoService.getDetailsSite(id).subscribe(data => {
             this.information = data;
+            console.log(this.information)
         });
     }
 

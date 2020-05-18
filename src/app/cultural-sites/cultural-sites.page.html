@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 <ion-toolbar color="primary">
-    <ion-searchbar placeholder="Rechercher par région..." (ionChange)="searchByRegion($event)"></ion-searchbar>
+    <ion-searchbar placeholder="Rechercher par continent..." (ionChange)="searchByRegion($event)"></ion-searchbar>
 </ion-toolbar>
 
 <ion-content>
@@ -26,6 +26,9 @@
                     {{item.fields.site}}
                 </p>
                 <p>
+                    <ion-icon name="locate"></ion-icon>
+                    {{item.fields.states}}
+                </p> <p>
                     <ion-icon name="locate"></ion-icon>
                     {{item.fields.region}}
                 </p>
