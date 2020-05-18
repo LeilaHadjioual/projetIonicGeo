@@ -22,7 +22,11 @@ export class QuizPage implements OnInit {
     round = 1;
     points = [
         {
-            nbPoints: 100,
+            nbPoints: 500,
+            distance: 200
+        },
+        {
+            nbPoints: 200,
             distance: 500
         },
         {
@@ -44,7 +48,7 @@ export class QuizPage implements OnInit {
             distance: 10000
         },
         {
-            nbPoints: 1,
+            nbPoints: 5,
             distance: 20000
         },
     ];
@@ -64,15 +68,9 @@ export class QuizPage implements OnInit {
     }
 
     playGame() {
-        this.alertConsignes();
+        this.alertConsignes().then(r => console.log('alerte then'));
         this.randomImage();
         if (this.marker !== undefined) {
-            // this.map.removeLayer(this.marker);
-            // this.marker = undefined;
-            // if (this.markerResult !== undefined && this.polyline !== undefined) {
-            //     this.map.removeLayer(this.markerResult);
-            //     this.map.removeLayer(this.polyline);
-            // }
             this.clearMap();
         }
         this.dist = null;
@@ -93,14 +91,11 @@ export class QuizPage implements OnInit {
         this.selectedImg = this.quizData[Math.floor(Math.random() * this.quizData.length)];
         if (this.marker !== undefined) {
             this.clearMap();
-            // this.map.removeLayer(this.marker);
-            // this.marker = undefined;
-            // if (this.markerResult !== undefined && this.polyline !== undefined) {
-            //     this.map.removeLayer(this.markerResult);
-            //     this.map.removeLayer(this.polyline);
-            // }
         }
         console.log('image', this.selectedImg);
+        if (this.round >= 6) {
+            this.presentAlert().then(r => console.log('alerte then'));
+        }
         this.dist = null;
         this.played = false;
     }
@@ -119,14 +114,8 @@ export class QuizPage implements OnInit {
                     }
                     if (this.marker !== undefined) {
                         this.clearMap();
-                        // this.map.removeLayer(this.marker);
-                        // if (this.markerResult !== undefined && this.polyline !== undefined) {
-                        //     this.map.removeLayer(this.markerResult);
-                        //     this.map.removeLayer(this.polyline);
-                        // }
                     }
                     this.marker = marker([e.latlng.lat, e.latlng.lng]).addTo(this.map);
-                    console.log('event après', e);
                     this.dist = null;
                 }
             )
@@ -150,6 +139,13 @@ export class QuizPage implements OnInit {
         let lon2 = this.marker._latlng.lng;
         let latlngs = [[lat1, lon1],
             [lat2, lon2]];
+
+        // clear map
+        if (this.markerResult !== undefined && this.polyline !== undefined) {
+            this.map.removeLayer(this.markerResult);
+            this.map.removeLayer(this.polyline);
+        }
+        // calcul
         if ((lat1 === lat2) && (lon1 === lon2)) {
             return 0;
         } else {
@@ -169,15 +165,8 @@ export class QuizPage implements OnInit {
             this.markerResult = marker([lat1, lon1], {icon: myIcon}).addTo(this.map);
             this.polyline = polyline(latlngs, {color: 'black', weight: 1}).addTo(this.map);
             this.played = true;
-            // return this.dist;
             this.calculPoints();
             this.round++;
-            if (this.round === 6) {
-                console.log('fin');
-                this.presentAlert();
-            }
-            console.log('round', this.round);
-
         }
 
     }
@@ -185,7 +174,6 @@ export class QuizPage implements OnInit {
     calculPoints() {
         for (let i = 0; i < this.points.length; i++) {
             if (this.dist < this.points[i].distance) {
-                console.log('hello', this.points[i].nbPoints);
                 this.totalPoints = this.totalPoints + this.points[i].nbPoints;
                 return;
             }
@@ -196,7 +184,7 @@ export class QuizPage implements OnInit {
         const alert = await this.alertController.create({
             header: 'Le jeu est terminé',
             subHeader: 'BRAVO',
-            message: 'vous avez cumulé un total de ' + this.totalPoints + ' points',
+            message: 'Vous avez cumulé un total de ' + this.totalPoints + ' points',
             buttons: ['OK']
         });
         this.totalPoints = 0;
@@ -209,14 +197,12 @@ export class QuizPage implements OnInit {
         const alert = await this.alertController.create({
             header: 'Comment jouer',
             message: 'Regardez la photo, lorsque vous pensez savoir où se situe le site, ' +
-                'cliquez sur "afficher la carte" et indiquer le lieu, ' +
+                'cliquez sur "afficher la carte" et indiquez le lieu, ' +
                 'pour connaitre la réponse, cliquez sur réponse. ' +
-                'Vous pouvez passer à la prochaine photo en cliquant sur'
+                'Vous pouvez passer à la prochaine photo en cliquant sur load'
             ,
             buttons: ['OK']
         });
-        // this.totalPoints = 0;
-        // this.round = 1;
         await alert.present();
     }
 

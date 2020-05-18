@@ -9,16 +9,13 @@
 
 <ion-content id="contentStyle">
     <ion-buttons>
-        <ion-back-button *ngIf="information && information.records[0].fields.category=== 'Cultural'"
-                         defaultHref="/cultural-sites"></ion-back-button>
-        <ion-back-button *ngIf="information && information.records[0].fields.category=== 'Natural'"
-                         defaultHref="/natural-sites"></ion-back-button>
+        <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
     <ion-card *ngIf="information">
         <ion-item class="headerCard">
             <ion-avatar item-start>
-                <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
+                <img alt="image site" src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
             </ion-avatar>
             <h5>{{information?.records[0].fields.site}}</h5>
             <button class="locationBtn" (click)="openModal()">
@@ -26,7 +23,8 @@
             </button>
         </ion-item>
         <div class="imgDetails">
-            <img alt="image site" src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
+            <img alt="image site"
+                 src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
         </div>
         <ion-card-content>
             <p>Catégorie de site : {{information.records[0].fields.category}}</p>
@@ -57,21 +55,13 @@
                     <div>4 Commentaires</div>
                 </button>
             </ion-col>
-            <!--            <ion-col align-self-center text-center>-->
-            <!--                <ion-note>-->
-            <!--                    11h ago-->
-            <!--                </ion-note>-->
-            <!--            </ion-col>-->
         </ion-row>
-
     </ion-card>
 
     <ion-button expand="full" [routerLink]="['/', 'my-map']" color="tertiary">
         <ion-icon name="map" color="light"></ion-icon>
         accéder à la carte
     </ion-button>
-
-
     <div>
         <app-quiz-banner></app-quiz-banner>
     </div>

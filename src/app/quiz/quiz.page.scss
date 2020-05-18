@@ -1,12 +1,19 @@
 #quizPage {
+  .background{
+    background-color: beige;
+
+  }
   .txtCenter {
-    margin: 1em;
+    //margin: 1em;
     text-align: center;
+    background-color: beige;
+    padding: 1em;
+    margin-top: -0.5em
   }
   .alignImgText {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    //justify-content: space-between;
     align-items: center;
     //margin: 1em;
   }
@@ -24,10 +31,13 @@
     margin-left: 1em;
   }
   .txtQuiz{
-    margin: 1em;
+    margin-left: 1em;
     text-align: center;
   }
 
+  #textdist{
+    max-width: 15em
+  }
   .btnReload{
     width: 2em;
     height: 2em;

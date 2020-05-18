@@ -1,3 +1,26 @@
-.imgCultural{
-  border-radius: 50%;
+#culturalSitePage{
+  .imgCultural{
+    border-radius: 50%;
+  }
+  ion-icon{
+    vertical-align: text-top;
+  }
+  .labelSite{
+    color:var(--ion-color-secondary);
+    font-weight: bold;
+  }
+
+  .labelState{
+    color:var(--ion-color-warning);
+    font-weight: bold;
+
+
+  }
+  .labelRegion{
+    color:var(--ion-color-danger);
+    font-weight: bold;
+
+
+
+  }
 }

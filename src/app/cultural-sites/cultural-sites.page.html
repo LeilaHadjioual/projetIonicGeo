@@ -10,7 +10,7 @@
     <ion-searchbar placeholder="Rechercher par continent..." (ionChange)="searchByRegion($event)"></ion-searchbar>
 </ion-toolbar>
 
-<ion-content>
+<ion-content id="culturalSitePage">
     <ion-buttons>
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -21,15 +21,19 @@
                      src="https://whc.unesco.org/uploads/sites/{{item.fields.image_url.filename}}"/>
             </ion-thumbnail>
             <ion-label>
-                <p>
-                    <ion-icon name="heart-outline"></ion-icon>
+                <p class="labelSite">
+                    <ion-icon name="star-outline"></ion-icon>
+<!--                    <ion-icon name="heart-outline"></ion-icon>-->
                     {{item.fields.site}}
                 </p>
-                <p>
+                <p class="labelState">
                     <ion-icon name="locate"></ion-icon>
                     {{item.fields.states}}
-                </p> <p>
-                    <ion-icon name="locate"></ion-icon>
+                </p>
+                <p class="labelRegion">
+<!--                    <ion-icon name="navigate-circle-outline"></ion-icon>-->
+                    <ion-icon name="navigate-outline"></ion-icon>
+<!--                    <ion-icon name="locate"></ion-icon>-->
                     {{item.fields.region}}
                 </p>
 

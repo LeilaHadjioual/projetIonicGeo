@@ -8,15 +8,16 @@
 </ion-header>
 
 <ion-content id="quizPage">
-    <ion-buttons>
+    <ion-buttons class="background" >
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
     <div class="txtCenter">
         <p>Testez vos connaissances géographiques et culturels avec notre quiz de gélocalisation en retrouvant où se
-            situe les sites cuturels et naturels</p>
+            situent les sites cuturels et naturels</p>
         <p>Après une partie de 5 tours, vous découvrirez votre score</p>
     </div>
+    <img src="../../assets/imgHome/patrimoine-mondial-unesco.jpg" alt="">
     <ion-button color="secondary" expand="full" (click)="playGame()">
         <ion-icon style="margin:0.5em" name="game-controller-outline"></ion-icon>
         JOUER
@@ -29,8 +30,7 @@
                  alt="image quiz">
         </div>
         <div class="txtQuiz">
-            <p id="textdist" *ngIf="dist">Vous êtes à {{dist}} km de la localisation</p>
-
+            <p id="textdist" *ngIf="dist">Nom : {{selectedImg.fields.site}} <br>Localisation : {{selectedImg.fields.states}}. <br>Vous êtes {{dist}} km trop loin...</p>
         </div>
     </div>
 
