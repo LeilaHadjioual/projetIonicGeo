@@ -25,9 +25,9 @@
                 <ion-icon name="location-sharp" size="large"></ion-icon>
             </button>
         </ion-item>
-
-        <img src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
-
+        <div class="imgDetails">
+            <img alt="image site" src="https://whc.unesco.org/uploads/sites/{{information.records[0].fields.image_url.filename}}">
+        </div>
         <ion-card-content>
             <p>Catégorie de site : {{information.records[0].fields.category}}</p>
             <p>Date inscription UNESCO : {{information.records[0].fields.date_inscribed}}</p>
@@ -66,7 +66,7 @@
 
     </ion-card>
 
-    <ion-button expand="full" [routerLink]="['/', 'my-map']" color="danger">
+    <ion-button expand="full" [routerLink]="['/', 'my-map']" color="tertiary">
         <ion-icon name="map" color="light"></ion-icon>
         accéder à la carte
     </ion-button>

@@ -18,14 +18,14 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
-      title: 'Carte du monde',
-      url: '/my-map',
-      icon: 'map'
-    },
-    {
       title: 'Rechercher',
       url: '/search',
       icon: 'search'
+    },
+    {
+      title: 'Carte du monde',
+      url: '/my-map',
+      icon: 'map'
     },
     {
       title: 'Quiz',

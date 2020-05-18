@@ -1,7 +1,21 @@
 #contentStyle{
+
+  ion-avatar{
+    min-width: 2em;
+    height: auto;
+  }
+  .headerCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ! important;
+  }
    .locationBtn{
     background-color: transparent;
-    color:var(--ion-color-danger);
+    color:var(--ion-color-secondary);
+  }
+  .imgDetails{
+    text-align: center;
+    margin: 1em;
   }
   h5, span{
     margin:1em;
@@ -14,7 +28,7 @@
     color:var(--ion-color-primary);
   }
   hr{
-    border:1px solid var(--ion-color-success);
+    border:1px solid var(--ion-color-secondary);
   }
 
   .linkBtn{

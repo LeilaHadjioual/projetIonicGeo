@@ -64,29 +64,41 @@ export class QuizPage implements OnInit {
     }
 
     playGame() {
+        this.alertConsignes();
         this.randomImage();
         if (this.marker !== undefined) {
-            this.map.removeLayer(this.marker);
-            this.marker = undefined;
-            if (this.markerResult !== undefined && this.polyline !== undefined) {
-                this.map.removeLayer(this.markerResult);
-                this.map.removeLayer(this.polyline);
-            }
+            // this.map.removeLayer(this.marker);
+            // this.marker = undefined;
+            // if (this.markerResult !== undefined && this.polyline !== undefined) {
+            //     this.map.removeLayer(this.markerResult);
+            //     this.map.removeLayer(this.polyline);
+            // }
+            this.clearMap();
         }
         this.dist = null;
         this.played = false;
         this.round = 1;
     }
 
+    clearMap() {
+        this.map.removeLayer(this.marker);
+        this.marker = undefined;
+        if (this.markerResult !== undefined && this.polyline !== undefined) {
+            this.map.removeLayer(this.markerResult);
+            this.map.removeLayer(this.polyline);
+        }
+    }
+
     randomImage() {
         this.selectedImg = this.quizData[Math.floor(Math.random() * this.quizData.length)];
         if (this.marker !== undefined) {
-            this.map.removeLayer(this.marker);
-            this.marker = undefined;
-            if (this.markerResult !== undefined && this.polyline !== undefined) {
-                this.map.removeLayer(this.markerResult);
-                this.map.removeLayer(this.polyline);
-            }
+            this.clearMap();
+            // this.map.removeLayer(this.marker);
+            // this.marker = undefined;
+            // if (this.markerResult !== undefined && this.polyline !== undefined) {
+            //     this.map.removeLayer(this.markerResult);
+            //     this.map.removeLayer(this.polyline);
+            // }
         }
         console.log('image', this.selectedImg);
         this.dist = null;
@@ -106,11 +118,12 @@ export class QuizPage implements OnInit {
                         return;
                     }
                     if (this.marker !== undefined) {
-                        this.map.removeLayer(this.marker);
-                        if (this.markerResult !== undefined && this.polyline !== undefined) {
-                            this.map.removeLayer(this.markerResult);
-                            this.map.removeLayer(this.polyline);
-                        }
+                        this.clearMap();
+                        // this.map.removeLayer(this.marker);
+                        // if (this.markerResult !== undefined && this.polyline !== undefined) {
+                        //     this.map.removeLayer(this.markerResult);
+                        //     this.map.removeLayer(this.polyline);
+                        // }
                     }
                     this.marker = marker([e.latlng.lat, e.latlng.lng]).addTo(this.map);
                     console.log('event après', e);
@@ -181,9 +194,9 @@ export class QuizPage implements OnInit {
 
     async presentAlert() {
         const alert = await this.alertController.create({
-            header: 'GAME OVER',
-            subHeader: 'Oups, le jeu est terminé',
-            message: 'Vous avez cumulé un total de ' + this.totalPoints + ' points',
+            header: 'Le jeu est terminé',
+            subHeader: 'BRAVO',
+            message: 'vous avez cumulé un total de ' + this.totalPoints + ' points',
             buttons: ['OK']
         });
         this.totalPoints = 0;
@@ -191,5 +204,20 @@ export class QuizPage implements OnInit {
         await alert.present();
     }
 
+
+    async alertConsignes() {
+        const alert = await this.alertController.create({
+            header: 'Comment jouer',
+            message: 'Regardez la photo, lorsque vous pensez savoir où se situe le site, ' +
+                'cliquez sur "afficher la carte" et indiquer le lieu, ' +
+                'pour connaitre la réponse, cliquez sur réponse. ' +
+                'Vous pouvez passer à la prochaine photo en cliquant sur'
+            ,
+            buttons: ['OK']
+        });
+        // this.totalPoints = 0;
+        // this.round = 1;
+        await alert.present();
+    }
 
 }

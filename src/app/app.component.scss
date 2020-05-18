@@ -110,11 +110,14 @@ ion-menu.ios ion-note {
 ion-note {
   display: inline-block;
   font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
+  color:white;
+  //color: var(--ion-color-medium-shade);
 }
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+#inbox-list{
+  background-color: var(--ion-color-primary);
 }
 
