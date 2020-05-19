@@ -184,7 +184,7 @@ export class QuizPage implements OnInit {
         const alert = await this.alertController.create({
             header: 'Le jeu est terminé',
             subHeader: 'BRAVO',
-            message: 'Vous avez cumulé un total de ' + this.totalPoints + ' points',
+            message: 'Vous avez cumulé un total de <strong>' + this.totalPoints + '</strong> points',
             buttons: ['OK']
         });
         this.totalPoints = 0;
@@ -197,9 +197,10 @@ export class QuizPage implements OnInit {
         const alert = await this.alertController.create({
             header: 'Comment jouer',
             message: 'Regardez la photo, lorsque vous pensez savoir où se situe le site, ' +
-                'cliquez sur "afficher la carte" et indiquez le lieu, ' +
-                'pour connaitre la réponse, cliquez sur réponse. ' +
-                'Vous pouvez passer à la prochaine photo en cliquant sur load'
+                '<br> cliquez sur afficher la carte et indiquez le lieu.  ' +
+                '<br> Pour connaitre la réponse, cliquez sur réponse. ' +
+                '<br> Vous pouvez passer à la prochaine photo en cliquant sur ' +
+                '<ion-icon  name="reload-outline"></ion-icon>'
             ,
             buttons: ['OK']
         });
