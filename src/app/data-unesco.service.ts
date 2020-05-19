@@ -14,15 +14,8 @@ export class DataUnescoService {
     constructor(private readonly http: HttpClient) {
     }
 
-
     getAllData(): Observable<any> {
         return this.http.get(`${this.url}`);
-            // .pipe(
-            //     map(results => {
-            //         console.log('alldataforsearch', results);
-            //         return results ['Search'];
-            //     })
-            // );
     }
 
     getDataCultural(): Observable<any> {
@@ -34,8 +27,10 @@ export class DataUnescoService {
     }
 
     getDetailsSite(id: string) {
-        // console.log('getdetails');
         return this.http.get(`${this.url}&refine.recordid=${id}`);
 
     }
+
+
+
 }

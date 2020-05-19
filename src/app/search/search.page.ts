@@ -9,6 +9,8 @@ import {Observable} from 'rxjs';
 })
 export class SearchPage implements OnInit {
     jsonData: any = [];
+    myImage: any ;
+
 
     constructor(private dataUnescoService: DataUnescoService) {
     }
@@ -20,8 +22,18 @@ export class SearchPage implements OnInit {
     initializeJsonData() {
         this.dataUnescoService.getAllData().subscribe(data => {
             this.jsonData = data.records;
-            // console.log('data', this.jsonData);
+            console.log('data', this.jsonData);
             this.jsonData.sort(this.sortJsonData);
+            this.httpGetAsync('https://whc.unesco.org/en/list/230/gallery/&maxrows=10', function(res) {
+                let el = document.createElement( 'html' );
+                el.innerHTML = res;
+                let imgs = el.getElementsByClassName('icaption-img');
+                for (let k = 0; k < imgs.length; k++) {
+                    console.log(imgs[k].getAttribute('data-src'));
+                    console.log('imagesss', this.myImage);
+                }
+
+            });
         });
     }
 
@@ -47,6 +59,18 @@ export class SearchPage implements OnInit {
             compare = -1;
         }
         return compare;
+    }
+
+    httpGetAsync(theUrl, callback) {
+        let xmlHttp = new XMLHttpRequest();
+        // tslint:disable-next-line:only-arrow-functions
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                callback(xmlHttp.responseText);
+            }
+        };
+        xmlHttp.open('GET', theUrl, true); // true for asynchronous
+        xmlHttp.send(null);
     }
 
 
