@@ -7,10 +7,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
+  // {
+  //   path: 'folder/:id',
+  //   loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  // },
   {
     path: 'my-map',
     loadChildren: () => import('./my-map/my-map.module').then( m => m.MyMapPageModule)
