@@ -7,11 +7,13 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="myMapPage">
     <ion-buttons >
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
-        <div id="myMap" style="width:100%; height:100%;"></div>
-        <!--  <ion-button (click)="getPosition()">show marker</ion-button>-->
+        <div id="myMap" style="width:100%; height:95%;">
+            <ion-button class="btnMyPosition" color="primary" (click)="getMyPosition()">Ma position</ion-button>
+
+        </div>
 </ion-content>
