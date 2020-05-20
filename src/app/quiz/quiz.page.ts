@@ -20,6 +20,7 @@ export class QuizPage implements OnInit {
     played = false;
     totalPoints = 0;
     round = 1;
+    newImage: any;
     points = [
         {
             nbPoints: 500,
@@ -65,6 +66,7 @@ export class QuizPage implements OnInit {
             this.quizData = data.records;
             console.log('data quiz', this.quizData);
         });
+       
     }
 
     playGame() {
@@ -88,7 +90,18 @@ export class QuizPage implements OnInit {
     }
 
     randomImage() {
-        this.selectedImg = this.quizData[Math.floor(Math.random() * this.quizData.length)];
+        let random = Math.floor(Math.random() * this.quizData.length);
+        this.selectedImg = this.quizData[random];
+        this.httpGetAsync(`https://whc.unesco.org/en/list/${this.selectedImg.fields.id_number}/gallery`, (data) => {
+                const el = document.createElement('html');
+                el.innerHTML = data;
+                const imgs = el.getElementsByClassName('icaption-img');
+                console.log('imgs', imgs);
+                // for (let k = 0; k < imgs.length; k++) {
+                const rand = Math.floor(Math.random() * 10);
+                this.newImage = imgs[rand].getAttribute('data-src');
+                 // }
+            });
         if (this.marker !== undefined) {
             this.clearMap();
         }
@@ -205,6 +218,17 @@ export class QuizPage implements OnInit {
             buttons: ['OK']
         });
         await alert.present();
+    }
+
+    httpGetAsync(theUrl, callback) {
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = () => {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                callback(xmlHttp.responseText);
+            }
+        };
+        xmlHttp.open('GET', theUrl, true); // true for asynchronous
+        xmlHttp.send(null);
     }
 
 }
