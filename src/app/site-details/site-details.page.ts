@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataUnescoService} from '../data-unesco.service';
-import {Observable} from 'rxjs';
 import {ModalController} from '@ionic/angular';
 import {ModalPage} from '../modal/modal.page';
 
@@ -21,7 +20,7 @@ export class SiteDetailsPage implements OnInit {
         let id = this.siteDetails = this.activatedRoute.snapshot.paramMap.get('id');
         this.dataUnescoService.getDetailsSite(id).subscribe(data => {
             this.information = data;
-            console.log(this.information)
+            // console.log(this.information)
         });
     }
 

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {DataUnescoService} from '../data-unesco.service';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-search',
@@ -33,7 +32,6 @@ export class SearchPage implements OnInit {
         } else {
             this.initializeJsonData();
         }
-
     }
 
     sortJsonData(a: any, b: any) {
@@ -47,6 +45,4 @@ export class SearchPage implements OnInit {
         }
         return compare;
     }
-
-
 }

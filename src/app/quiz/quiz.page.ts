@@ -23,33 +23,33 @@ export class QuizPage implements OnInit {
     newImage: any;
     points = [
         {
-            nbPoints: 500,
+            nbPoints: 1000,
             distance: 200
         },
         {
-            nbPoints: 200,
+            nbPoints: 500,
             distance: 500
         },
         {
-            nbPoints: 80,
+            nbPoints: 200,
             distance: 1000
         }, {
-            nbPoints: 60,
+            nbPoints: 100,
             distance: 2000
         },
         {
-            nbPoints: 40,
+            nbPoints: 80,
             distance: 4000
         },
         {
-            nbPoints: 20,
+            nbPoints: 60,
             distance: 6000
         }, {
-            nbPoints: 10,
+            nbPoints: 40,
             distance: 10000
         },
         {
-            nbPoints: 5,
+            nbPoints: 20,
             distance: 20000
         },
     ];
@@ -66,7 +66,6 @@ export class QuizPage implements OnInit {
             this.quizData = data.records;
             console.log('data quiz', this.quizData);
         });
-       
     }
 
     playGame() {
@@ -107,14 +106,10 @@ export class QuizPage implements OnInit {
         }
         console.log('image', this.selectedImg);
         if (this.round >= 6) {
-            this.presentAlert().then(r => console.log('alerte then'));
+            this.alertEndGame().then(r => console.log('alerte then'));
         }
         this.dist = null;
         this.played = false;
-    }
-
-    ionViewDidEnter() {
-        // this.loadMap();
     }
 
     loadMap() {
@@ -158,7 +153,7 @@ export class QuizPage implements OnInit {
             this.map.removeLayer(this.markerResult);
             this.map.removeLayer(this.polyline);
         }
-        // calcul
+        // calcul distance
         if ((lat1 === lat2) && (lon1 === lon2)) {
             return 0;
         } else {
@@ -181,7 +176,6 @@ export class QuizPage implements OnInit {
             this.calculPoints();
             this.round++;
         }
-
     }
 
     calculPoints() {
@@ -193,7 +187,7 @@ export class QuizPage implements OnInit {
         }
     }
 
-    async presentAlert() {
+    async alertEndGame() {
         const alert = await this.alertController.create({
             header: 'Le jeu est terminé',
             subHeader: 'BRAVO',

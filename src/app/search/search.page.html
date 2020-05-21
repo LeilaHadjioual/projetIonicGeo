@@ -14,7 +14,7 @@
     <ion-list>
         <ion-item *ngFor="let item of jsonData" [routerLink]="['/', 'site-details', item.recordid]">
             <ion-avatar style="margin: 0.5em">
-                <img src="https://whc.unesco.org/uploads/sites/{{item.fields.image_url.filename}}">
+                <img alt="image site" src="https://whc.unesco.org/uploads/sites/{{item.fields.image_url.filename}}">
             </ion-avatar>
             <p class="searchSiteText">{{item.fields.site}}</p>
         </ion-item>

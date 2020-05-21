@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
     styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-    // results: Observable<any>;
 
     constructor(private dataUnescoService: DataUnescoService, private router: Router) {
     }
@@ -18,21 +17,11 @@ export class HomePage implements OnInit {
     }
 
     goToCulturalSites() {
-        // this.results = this.dataUnescoService.getData();
-        // console.log('***results', this.results);
         this.router.navigate(['/cultural-sites']);
     }
 
     goToNaturalSites() {
-        // this.results = this.dataUnescoService.getData();
-        // console.log('***results', this.results);
         this.router.navigate(['/natural-sites']);
-        // this.dataUnescoService.getDataNatural().subscribe(data => {
-        //     console.log(data);
-        //     this.results = data;
-        //     this.router.navigate(['/natural-sites', this.results]);
-        //
-        // });
     }
 
 }

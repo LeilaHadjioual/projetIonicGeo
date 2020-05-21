@@ -8,8 +8,6 @@ import {Map, tileLayer, marker} from 'leaflet';
     styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
-
-    passedId = null;
     map: Map;
     latitude = null;
     longitude = null;

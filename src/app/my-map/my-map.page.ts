@@ -63,10 +63,7 @@ export class MyMapPage implements OnInit {
             ];
         }).then((latlng) => {
             this.addMarkerPosition(latlng);
-            console.log('latlong', latlng)
-
         });
-
     }
 
     addMarkerPosition(latlong) {
@@ -81,7 +78,6 @@ export class MyMapPage implements OnInit {
         this.myMarker = marker(latlong, {icon: myIcon});
         this.myMarker.addTo(this.map).bindPopup('Vous êtes ici !').openPopup();
         this.showSitesAroundMyPosition([latlong], 100000);
-
     }
 
     showSitesAroundMyPosition(coord, dist) {
@@ -101,36 +97,4 @@ export class MyMapPage implements OnInit {
             }
         });
     }
-
-    // loadmap() {
-    //     this.map = leaflet.map('map').fitWorld();
-    //     leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //         // tslint:disable-next-line:max-line-length
-    //         attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    //         maxZoom: 18
-    //     }).addTo(this.map);
-    //     this.map.locate({
-    //         setView: true,
-    //         maxZoom: 10
-    //     }).on('locationfound', (e) => {
-    //         const markerGroup = leaflet.featureGroup();
-    //         const marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
-    //             alert('Marker clicked');
-    //         });
-    //         markerGroup.addLayer(marker);
-    //         this.map.addLayer(markerGroup);
-    //     }).on('locationerror', (err) => {
-    //         alert(err.message);
-    //     });
-    //
-    // }
-
-    // loadmap() {
-    //     this.map = leaflet.map("map").fitWorld();
-    //     leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //         attributions: 'www.tphangout.com',
-    //         maxZoom: 18
-    //     }).addTo(this.map);
-    // }
-
 }

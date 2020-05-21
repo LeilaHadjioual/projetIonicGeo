@@ -22,7 +22,6 @@ export class CulturalSitesPage implements OnInit {
         this.dataUnescoService.getDataCultural().subscribe(data => {
             this.results = data.records;
             this.results.sort(this.sortData);
-            // console.log('affiche site culturel', this.results);
         });
     }
 
