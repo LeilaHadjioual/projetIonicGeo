@@ -71,10 +71,10 @@ export class MyMapPage implements OnInit {
 
     addMarkerPosition(latlong) {
         const myIcon = icon({
-            iconUrl: '../../assets/icon/marker.png',
-            iconSize: [25, 38],
+            iconUrl: '../../assets/icon/green.png',
+            iconSize: [40, 40],
             iconAnchor: [20, 45],
-            popupAnchor: [-5, -45],
+            popupAnchor: [0, -45],
             shadowSize: [68, 95],
             shadowAnchor: [22, 94]
         });
@@ -86,8 +86,8 @@ export class MyMapPage implements OnInit {
 
     showSitesAroundMyPosition(coord, dist) {
         const myIcon = icon({
-            iconUrl: '../../assets/icon/green.png',
-            iconSize: [25, 38],
+            iconUrl: '../../assets/icon/Mapicon.png',
+            iconSize: [40, 40],
             iconAnchor: [20, 45],
             popupAnchor: [-5, -45],
             shadowSize: [68, 95],

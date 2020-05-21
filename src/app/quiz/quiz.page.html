@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content id="quizPage">
-    <ion-buttons class="background" >
+    <ion-buttons class="background">
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
 
@@ -17,7 +17,7 @@
             situent les sites cuturels et naturels</p>
         <p>Après une partie de 5 tours, vous découvrirez votre score</p>
     </div>
-    <img src="../../assets/imgHome/patrimoine-mondial-unesco.jpg" alt="">
+    <img src="../../assets/imgHome/patrimoine-mondial-unesco.jpg" alt="image quiz" class="imgGame">
     <ion-button color="secondary" expand="full" (click)="playGame()">
         <ion-icon style="margin:0.5em" name="game-controller-outline"></ion-icon>
         JOUER
@@ -29,8 +29,10 @@
                  src="https://whc.unesco.org/{{newImage}}"
                  alt="image quiz">
         </div>
-        <div class="txtQuiz">
-            <p id="textdist" *ngIf="dist">Nom : {{selectedImg.fields.site}} <br>Localisation : {{selectedImg.fields.states}}. <br>Vous êtes {{dist}} km trop loin...</p>
+        <div class="txtQuiz" *ngIf="dist">
+            <span class="txtName">Nom : {{selectedImg.fields.site}}</span>
+            <span class="txtCity">Pays : {{selectedImg.fields.states}}</span>
+            <span  class="txtDist"><ion-icon name="airplane-sharp" class="plane"></ion-icon> Vous êtes {{dist}} km trop loin... </span>
         </div>
     </div>
 
@@ -41,8 +43,11 @@
         <p *ngIf="selectedImg && round<6">tour : {{round}}/5</p>
     </div>
 
-    <ion-button expand="full" color="warning" id="btnMap" *ngIf="selectedImg" (click)="loadMap()"><ion-icon name="locate-outline" style="margin:0.5em"></ion-icon>Afficher la carte</ion-button>
+    <ion-button expand="full" color="warning" id="btnMap" *ngIf="selectedImg" (click)="loadMap()">
+        <ion-icon name="locate-outline" style="margin:0.5em"></ion-icon>
+        Afficher la carte
+    </ion-button>
     <div id="quizMap" style="width:100%; height:50%;"></div>
-    <ion-button  expand="full" *ngIf="marker" (click)="calculDistance()">REPONSE</ion-button>
+    <ion-button expand="full" *ngIf="marker" (click)="calculDistance()">REPONSE</ion-button>
 
 </ion-content>
